@@ -89,4 +89,63 @@ public class FoodTruck {
 		return objectid;
 	}
 	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setPermit(String permit) {
+		this.permit = permit;
+	}
+
+	public void setBlock(String block) {
+		this.block = block;
+	}
+
+	public void setReceived(Date received) {
+		this.received = received;
+	}
+
+	public void setFaciltytype(String faciltytype) {
+		this.faciltytype = faciltytype;
+	}
+
+	public void setBlocklot(String blocklot) {
+		this.blocklot = blocklot;
+	}
+
+	public void setLocationdescription(String locationdescription) {
+		this.locationdescription = locationdescription;
+	}
+
+	public void setCnn(int cnn) {
+		this.cnn = cnn;
+	}
+
+	public void setPriorpermit(String priorpermit) {
+		this.priorpermit = priorpermit;
+	}
+
+	public void setSchedule(String schedule) {
+		this.schedule = schedule;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setApplicant(String applicant) {
+		this.applicant = applicant;
+	}
+
+	public void setLot(String lot) {
+		this.lot = lot;
+	}
+
+	public void setFooditems(String fooditems) {
+		this.fooditems = fooditems;
+	}
+
+	public void setObjectid(int objectid) {
+		this.objectid = objectid;
+	}
 }
