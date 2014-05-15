@@ -1,7 +1,5 @@
 package com.example.models;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -13,7 +11,7 @@ public class FoodTruck {
 	private String status; 
 	private String permit; 
 	private String block; 
-	private Date received; 
+	private String received; 
 	private String faciltytype; 
 	private String blocklot; 
 	private String locationdescription; 
@@ -41,7 +39,7 @@ public class FoodTruck {
 		return block;
 	}
 
-	public Date getReceived() {
+	public String getReceived() {
 		return received;
 	}
 
@@ -101,7 +99,7 @@ public class FoodTruck {
 		this.block = block;
 	}
 
-	public void setReceived(Date received) {
+	public void setReceived(String received) {
 		this.received = received;
 	}
 
