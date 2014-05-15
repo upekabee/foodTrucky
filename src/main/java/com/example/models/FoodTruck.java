@@ -1,50 +1,89 @@
 package com.example.models;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class FoodTruck {
 	
-	private int locationId; 
+	private String status; 
+	private String permit; 
+	private String block; 
+	private Date received; 
+	private String faciltytype; 
+	private String blocklot; 
+	private String locationdescription; 
+	private int cnn;
+	private String priorpermit; 
+	private String schedule; 
+	private String address; 
 	private String applicant; 
-	//private FacilityType faciltyType; 
-	private int cnn; 
-	private String locationDescription; 
+	private String lot; 
+	private String fooditems; 
+	private int objectid; 
 	
 	public FoodTruck() {
     }
 	
-	public FoodTruck(int locationId, 
-					String applicant,
-					FacilityType faciltyType, 
-					int cnn, 
-					String locationDescription) {
-		
-		this.locationId = locationId;
-		this.applicant = applicant;
-		//this.faciltyType = faciltyType;
-		this.cnn = cnn;
-		this.locationDescription = locationDescription;
-	}
-	
-	public int getLocationId() {
-		return locationId;
+	public String getStatus() {
+		return status;
 	}
 
-	public String getApplicant() {
-		return applicant;
+	public String getPermit() {
+		return permit;
+	}
+
+	public String getBlock() {
+		return block;
+	}
+
+	public Date getReceived() {
+		return received;
+	}
+
+	public String getFaciltytype() {
+		return faciltytype;
+	}
+
+	public String getBlocklot() {
+		return blocklot;
+	}
+
+	public String getLocationdescription() {
+		return locationdescription;
 	}
 
 	public int getCnn() {
 		return cnn;
 	}
 
-	public String getLocationDescription() {
-		return locationDescription;
+	public String getPriorpermit() {
+		return priorpermit;
 	}
-	
-//	public FacilityType getFaciltyType() {
-//		return faciltyType;
-//	}
+
+	public String getSchedule() {
+		return schedule;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getApplicant() {
+		return applicant;
+	}
+
+	public String getLot() {
+		return lot;
+	}
+
+	public String getFooditems() {
+		return fooditems;
+	}
+
+	public int getObjectid() {
+		return objectid;
+	}
 	
 }
