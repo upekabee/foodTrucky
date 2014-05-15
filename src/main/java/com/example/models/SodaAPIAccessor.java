@@ -24,7 +24,7 @@ public class SodaAPIAccessor {
 	public SodaAPIAccessor() throws MalformedURLException {
 		URL apiEndpoint = new URL(API_ACCESS_ENDPOINT);
 		ObjectMapper mapper = new ObjectMapper();
-		 
+		
 		try {
 			
 			List<FoodTruck> trucks = mapper.readValue(apiEndpoint, new TypeReference<List<FoodTruck>>(){});
