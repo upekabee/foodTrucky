@@ -7,17 +7,22 @@ public class FoodTruck {
 	
 	private int locationId; 
 	private String applicant; 
-	private FacilityType faciltyType; 
+	//private FacilityType faciltyType; 
 	private int cnn; 
 	private String locationDescription; 
 	
-	public FoodTruck(int locationId, String applicant,
-			FacilityType faciltyType, int cnn, 
-			String locationDescription) {
+	public FoodTruck() {
+    }
+	
+	public FoodTruck(int locationId, 
+					String applicant,
+					FacilityType faciltyType, 
+					int cnn, 
+					String locationDescription) {
 		
 		this.locationId = locationId;
 		this.applicant = applicant;
-		this.faciltyType = faciltyType;
+		//this.faciltyType = faciltyType;
 		this.cnn = cnn;
 		this.locationDescription = locationDescription;
 	}
@@ -30,10 +35,6 @@ public class FoodTruck {
 		return applicant;
 	}
 
-	public FacilityType getFaciltyType() {
-		return faciltyType;
-	}
-
 	public int getCnn() {
 		return cnn;
 	}
@@ -41,5 +42,9 @@ public class FoodTruck {
 	public String getLocationDescription() {
 		return locationDescription;
 	}
+	
+//	public FacilityType getFaciltyType() {
+//		return faciltyType;
+//	}
 	
 }
