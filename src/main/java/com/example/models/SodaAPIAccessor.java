@@ -10,25 +10,24 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
-public class FoodTruckDatabase {
+public class SodaAPIAccessor {
 	
 	private List<FoodTruck> foodTrucks = new ArrayList<FoodTruck>(); 
+
+	public String getAPI_ACCESS_ENDPOINT() {
+		return API_ACCESS_ENDPOINT;
+	}
+
 	private String API_ACCESS_ENDPOINT = "http://data.sfgov.org/resource/rqzj-sfat.json?locationid=305709";
-	 
-	// API fields
-//	private String locationIdField = "locationId";
-//	private String applicantField = "applicant";
-//	private String facilitytypeField = "facilitytype";
-//	private String cnnField = "cnn";
-//	private String locationdescriptionField = "locationdescription";
 	
-	public FoodTruckDatabase() throws MalformedURLException {
+	public SodaAPIAccessor() throws MalformedURLException {
 		URL apiEndpoint = new URL(API_ACCESS_ENDPOINT);
 		ObjectMapper mapper = new ObjectMapper();
 		 
 		try {
 			
 			FoodTruck foodTruck = mapper.readValue(apiEndpoint, FoodTruck.class);
+			foodTrucks.add(foodTruck);
 			System.out.println(foodTruck);
 	 
 		} catch (JsonGenerationException e) {
@@ -43,5 +42,16 @@ public class FoodTruckDatabase {
 		}
  
     }
+	
+	public List<FoodTruck> getFoodTrucks() {
+		return foodTrucks;
+	}
+	
+// API fields
+//		private String locationIdField = "locationId";
+//		private String applicantField = "applicant";
+//		private String facilitytypeField = "facilitytype";
+//		private String cnnField = "cnn";
+//		private String locationdescriptionField = "locationdescription";
 	
 }

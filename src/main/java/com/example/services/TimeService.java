@@ -15,6 +15,5 @@ public class TimeService {
     public Time get() {
         return new Time();
     }
-
 }
 
