@@ -9,6 +9,7 @@ import java.util.List;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 public class SodaAPIAccessor {
 	
@@ -26,9 +27,8 @@ public class SodaAPIAccessor {
 		 
 		try {
 			
-			FoodTruck foodTruck = mapper.readValue(apiEndpoint, FoodTruck.class);
-			foodTrucks.add(foodTruck);
-			System.out.println(foodTruck);
+			List<FoodTruck> trucks = mapper.readValue(apiEndpoint, new TypeReference<List<FoodTruck>>(){});
+			foodTrucks.addAll(trucks);
 	 
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
