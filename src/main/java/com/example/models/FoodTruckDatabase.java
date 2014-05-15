@@ -1,0 +1,47 @@
+package com.example.models;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
+public class FoodTruckDatabase {
+	
+	private List<FoodTruck> foodTrucks = new ArrayList<FoodTruck>(); 
+	private String API_ACCESS_ENDPOINT = "http://data.sfgov.org/resource/rqzj-sfat.json?locationid=305709";
+	 
+	// API fields
+//	private String locationIdField = "locationId";
+//	private String applicantField = "applicant";
+//	private String facilitytypeField = "facilitytype";
+//	private String cnnField = "cnn";
+//	private String locationdescriptionField = "locationdescription";
+	
+	public FoodTruckDatabase() throws MalformedURLException {
+		URL apiEndpoint = new URL(API_ACCESS_ENDPOINT);
+		ObjectMapper mapper = new ObjectMapper();
+		 
+		try {
+			
+			FoodTruck foodTruck = mapper.readValue(apiEndpoint, FoodTruck.class);
+			System.out.println(foodTruck);
+	 
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+	 
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+	 
+		} catch (IOException e) {
+			e.printStackTrace();
+	 
+		}
+ 
+    }
+	
+}
