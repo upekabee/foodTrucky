@@ -2,10 +2,11 @@ package com.example.models;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
-@JsonIgnoreProperties
 public class FoodTruck {
 	
 	private String status; 
@@ -17,7 +18,7 @@ public class FoodTruck {
 	private String locationdescription; 
 	private int cnn;
 	private String priorpermit; 
-	private String schedule; 
+	//private String schedule; 
 	private String address; 
 	private String applicant; 
 	private String lot; 
@@ -43,14 +44,17 @@ public class FoodTruck {
 		return received;
 	}
 
+	@JsonProperty("faciltytype")
 	public String getFaciltytype() {
 		return faciltytype;
 	}
 
+	@JsonProperty("blocklot")
 	public String getBlocklot() {
 		return blocklot;
 	}
 
+	@JsonProperty("locationdescription")
 	public String getLocationdescription() {
 		return locationdescription;
 	}
@@ -63,9 +67,9 @@ public class FoodTruck {
 		return priorpermit;
 	}
 
-	public String getSchedule() {
-		return schedule;
-	}
+//	public String getSchedule() {
+//		return schedule;
+//	}
 
 	public String getAddress() {
 		return address;
@@ -103,6 +107,7 @@ public class FoodTruck {
 		this.received = received;
 	}
 
+	@JsonProperty("faciltytype")
 	public void setFaciltytype(String faciltytype) {
 		this.faciltytype = faciltytype;
 	}
@@ -123,9 +128,9 @@ public class FoodTruck {
 		this.priorpermit = priorpermit;
 	}
 
-	public void setSchedule(String schedule) {
-		this.schedule = schedule;
-	}
+//	public void setSchedule(String schedule) {
+//		this.schedule = schedule;
+//	}
 
 	public void setAddress(String address) {
 		this.address = address;

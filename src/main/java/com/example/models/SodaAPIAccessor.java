@@ -19,7 +19,7 @@ public class SodaAPIAccessor {
 		return API_ACCESS_ENDPOINT;
 	}
 
-	private String API_ACCESS_ENDPOINT = "http://data.sfgov.org/resource/rqzj-sfat.json?locationid=305709";
+	private String API_ACCESS_ENDPOINT = "http://data.sfgov.org/resource/rqzj-sfat.json";
 	
 	public SodaAPIAccessor() throws MalformedURLException {
 		URL apiEndpoint = new URL(API_ACCESS_ENDPOINT);
