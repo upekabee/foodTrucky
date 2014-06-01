@@ -24,6 +24,7 @@ public class FoodTruck {
 	private String lot; 
 	private String fooditems; 
 	private int objectid; 
+	private Location location; 
 	
 	public FoodTruck() {
     }
@@ -150,5 +151,14 @@ public class FoodTruck {
 
 	public void setObjectid(int objectid) {
 		this.objectid = objectid;
+	}
+	
+	@JsonProperty("location")
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 }

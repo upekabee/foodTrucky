@@ -6,6 +6,7 @@
 		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 		<style>
 		  body { margin:0; padding:0; }
 		  #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -13,9 +14,30 @@
 	</head>
 	<body>
 		<div id='map'></div>
+			    
 		<script>
 			var map = L.mapbox.map('map', 'upekabee.id3ghdgh')
-			    .setView([40, -74.50], 9);
+			    .setView([37.767, -122.472],13);
+			    
+			(function() {
+  				var zeAPI = "http://localhost:8080/services/foodtrucks";
+  				$.getJSON( zeAPI, function() {
+  						console.log( "success" );
+					})
+					.done(function(data) {
+      					$.each(data, function(i, item) {
+        					if (item.location != null) {
+	        					L.marker([item.location.latitude, item.location.longitude], {
+	    							icon: L.mapbox.marker.icon({
+	        							'marker-size': 'large',
+	        							'marker-symbol': 'fast-food',
+	        							'marker-color': '#fa0'
+	    							})
+								}).addTo(map);
+      						}
+      					});
+    				});
+			})();
 		</script>
 	
 	</body>

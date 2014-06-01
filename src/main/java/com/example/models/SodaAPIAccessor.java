@@ -47,11 +47,4 @@ public class SodaAPIAccessor {
 		return foodTrucks;
 	}
 	
-// API fields
-//		private String locationIdField = "locationId";
-//		private String applicantField = "applicant";
-//		private String facilitytypeField = "facilitytype";
-//		private String cnnField = "cnn";
-//		private String locationdescriptionField = "locationdescription";
-	
 }
