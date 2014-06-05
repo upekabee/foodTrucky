@@ -16,9 +16,11 @@ import com.example.models.SodaAPIAccessor;
 public class FoodTruckService {
 	@GET
     public List<FoodTruck> get() throws MalformedURLException {
-        
-		SodaAPIAccessor apiAccessor = new SodaAPIAccessor(); 
-		return apiAccessor.getFoodTrucks();
+
+		SodaAPIAccessor apiAccessor = SodaAPIAccessor.getInstance(); 
+		return apiAccessor.getApprovedFoodTrucks();
+		
+		// Cold Truck: Corn Dogs: Noodle Soups: Candy: Pre-packaged Snacks: Sandwiches: Chips: Coffee: Tea: Various Beverages
     }
 
 }

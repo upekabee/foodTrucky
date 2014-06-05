@@ -14,14 +14,21 @@ import org.codehaus.jackson.type.TypeReference;
 public class SodaAPIAccessor {
 	
 	private List<FoodTruck> foodTrucks = new ArrayList<FoodTruck>(); 
+	private List<FoodTruck> approvedFoodTrucks = new ArrayList<FoodTruck>(); 
 
-	public String getAPI_ACCESS_ENDPOINT() {
-		return API_ACCESS_ENDPOINT;
-	}
-
+	private static SodaAPIAccessor instance = null;
 	private String API_ACCESS_ENDPOINT = "http://data.sfgov.org/resource/rqzj-sfat.json";
+	private String APPROVED_STATUS = "APPROVED";
 	
-	public SodaAPIAccessor() throws MalformedURLException {
+	public static SodaAPIAccessor getInstance() throws MalformedURLException {
+	
+		if (instance == null) {
+			instance = new SodaAPIAccessor();
+		}
+		return instance; 
+	}
+	
+	private SodaAPIAccessor() throws MalformedURLException {
 		URL apiEndpoint = new URL(API_ACCESS_ENDPOINT);
 		ObjectMapper mapper = new ObjectMapper();
 		
@@ -40,11 +47,25 @@ public class SodaAPIAccessor {
 			e.printStackTrace();
 	 
 		}
+		
+		// Create list of approved food trucks
+		for (FoodTruck f : foodTrucks) {
+			if (f.getStatus().equalsIgnoreCase(APPROVED_STATUS)) {
+				approvedFoodTrucks.add(f);
+			}
+		}
  
     }
 	
-	public List<FoodTruck> getFoodTrucks() {
+	public List<FoodTruck> getAllFoodTrucks() {
 		return foodTrucks;
 	}
 	
+	public List<FoodTruck> getApprovedFoodTrucks() {
+		return approvedFoodTrucks;
+	}
+	
+	public String getAPI_ACCESS_ENDPOINT() {
+		return API_ACCESS_ENDPOINT;
+	}
 }
