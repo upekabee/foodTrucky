@@ -11,6 +11,11 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
+import com.example.models.geojson.FeatureCollection;
+import com.example.models.geojson.Feature;
+import com.example.models.geojson.Geometry;
+import com.example.models.geojson.Properties;
+
 public class SodaAPIAccessor {
 	
 	private List<FoodTruck> foodTrucks = new ArrayList<FoodTruck>(); 
@@ -67,5 +72,36 @@ public class SodaAPIAccessor {
 	
 	public String getAPI_ACCESS_ENDPOINT() {
 		return API_ACCESS_ENDPOINT;
+	}
+	
+	public FeatureCollection getGeoJSON() throws MalformedURLException {
+		
+		FeatureCollection featureCollection = new FeatureCollection();
+		List<Feature> features = new ArrayList<Feature>();
+		featureCollection.setFeatures(features);
+		
+		List<FoodTruck> foodTrucks = SodaAPIAccessor.getInstance().getApprovedFoodTrucks();
+		for (FoodTruck ft : foodTrucks) {
+			
+			if (ft.getLocation() != null) {
+				// Create coordinates
+				double[] coordinates = new double[2];
+				coordinates[0] = ft.getLocation().getLatitude();
+				coordinates[1] = ft.getLocation().getLongitude();
+
+				// Set coordinates on geometry 
+				Geometry geo = new Geometry();
+				geo.setCoordinates(coordinates);
+				
+				Properties properties = new Properties(); 
+				properties.setMarkerColor("#9c89cc");
+				
+				Feature f = new Feature(geo, properties);
+				features.add(f);
+			}
+		}
+		
+		return featureCollection;
+		
 	}
 }

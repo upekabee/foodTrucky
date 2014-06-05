@@ -1,9 +1,10 @@
-package com.example.models;
+package com.example.models.geojson;
 
 public enum FeatureType {
 
 	FEATURECOLLECTION("FeatureCollection"),
-	FEATURE("Feature");
+	FEATURE("Feature"), 
+	GEOMETRY("Point"); // All I have right now are Points. 
 	
 	private final String type; 
 	FeatureType(String type) {

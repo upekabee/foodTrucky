@@ -9,6 +9,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @XmlRootElement
 public class FoodTruck {
 	
+	// Fields
 	private String status; 
 	private String permit; 
 	private String block; 
@@ -29,6 +30,7 @@ public class FoodTruck {
 	public FoodTruck() {
     }
 	
+	// Getters and setters
 	public String getStatus() {
 		return status;
 	}

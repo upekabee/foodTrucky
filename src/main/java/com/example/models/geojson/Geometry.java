@@ -1,26 +1,26 @@
-package com.example.models;
+package com.example.models.geojson;
 
 import javax.xml.bind.annotation.XmlRootElement;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @XmlRootElement
-public class Geometry {
+public class Geometry extends BaseFeature {
 	
-	private String type; 
+	// Fields
 	private double[] coordinates; 
 	
-	public String getType() {
-		return type;
+	public Geometry() {
+		super(FeatureType.GEOMETRY.getValue());
 	}
-	public void setType(String type) {
-		this.type = type;
-	}
+	
+	// Getters and setters
 	public double[] getCoordinates() {
 		return coordinates;
 	}
+	
 	public void setCoordinates(double[] coordinates) {
 		this.coordinates = coordinates;
 	}
-	
 }
