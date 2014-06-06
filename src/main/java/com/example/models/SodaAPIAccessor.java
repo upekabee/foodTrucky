@@ -81,20 +81,30 @@ public class SodaAPIAccessor {
 		featureCollection.setFeatures(features);
 		
 		List<FoodTruck> foodTrucks = SodaAPIAccessor.getInstance().getApprovedFoodTrucks();
-		for (FoodTruck ft : foodTrucks) {
+		for (int i=0; i<foodTrucks.size(); i++) {
 			
+			FoodTruck ft = foodTrucks.get(i);
 			if (ft.getLocation() != null) {
 				// Create coordinates
 				double[] coordinates = new double[2];
-				coordinates[0] = ft.getLocation().getLatitude();
-				coordinates[1] = ft.getLocation().getLongitude();
+				coordinates[0] = ft.getLocation().getLongitude();
+				coordinates[1] = ft.getLocation().getLatitude();
 
 				// Set coordinates on geometry 
 				Geometry geo = new Geometry();
 				geo.setCoordinates(coordinates);
 				
 				Properties properties = new Properties(); 
-				properties.setMarkerColor("#9c89cc");
+				properties.setMarkerSize("large");
+				
+				if (i % 2 == 0) {
+					properties.setMarkerColor("#fa0");
+					properties.setMarkerSymbol("fast-food");
+					
+				} else {
+					properties.setMarkerColor("#9c89cc");
+					properties.setMarkerSymbol("cafe");
+				}
 				
 				Feature f = new Feature(geo, properties);
 				features.add(f);

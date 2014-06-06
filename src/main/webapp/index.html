@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset=utf-8 />
@@ -16,39 +15,22 @@
 		<style>
 			.search-ui {
 			  position:absolute;
-			  top:10px;
-			  right:10px;
-			  z-index:1000;
+			  top:50px;
+			  right:50px;
+			  z-index:3000;
 			  }
 		</style>
 		
 		<div id='map'></div>
-		<input id='search' class='search-ui' placeholder='What do you want to eat?' />
+		<input id='search' class='search-ui' placeholder='Food?' />
 			    
 		<script>
 			var map = L.mapbox.map('map', 'upekabee.id3ghdgh')
 			    .setView([37.767, -122.472],13);
+			var featureLayer = L.mapbox.featureLayer().addTo(map);
+			featureLayer.loadURL('/services/geojson');
+			
 			$('#search').keyup(search);
-			    
-			(function() {
-  				var zeAPI = "/services/foodtrucks";
-  				$.getJSON(zeAPI, function() {
-  						console.log( "success" );
-					})
-					.done(function(data) {
-      					$.each(data, function(i, item) {
-        					if (item.location != null) {
-	        					L.marker([item.location.latitude, item.location.longitude], {
-	    							icon: L.mapbox.marker.icon({
-	        							'marker-size': 'large',
-	        							'marker-symbol': 'fast-food',
-	        							'marker-color': '#fa0'
-	    							})
-								}).addTo(map);
-      						}
-      					});
-    				});
-			})();
 			
 			function search() {
     			// get the value of the search input field
@@ -68,3 +50,32 @@
 	
 	</body>
 </html>
+
+<!--
+function(data) {
+      					$.each(data, function(i, item) {
+        					if (item.location != null) {
+	        					L.marker([item.location.latitude, item.location.longitude], {
+	    							icon: L.mapbox.marker.icon({
+	        							'marker-size': 'large',
+	        							'marker-symbol': 'fast-food',
+	        							'marker-color': '#fa0'
+	    							})
+								}).addTo(map);
+      						}
+      					}
+ 
+ (function() {
+  				var zeAPI = "/services/geojson";
+  				$.getJSON(zeAPI, function() {
+  						console.log( "success" );
+					})
+					.done();
+    				});
+			})();
+			
+			function geoJSONLoaded(data) {
+    			featureLayer.setGeoJSON(csv2geojson.csv2geojson(csv));
+			}
+ 
+-->
