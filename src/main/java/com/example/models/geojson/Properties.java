@@ -13,6 +13,7 @@ public class Properties {
 	private String markerColor;
 	private String markerSize; 
 	private String markerSymbol;
+	private String[] foodItemList; 
 	
 	// Getters and setters
 	@JsonProperty("marker-color")
@@ -43,5 +44,15 @@ public class Properties {
 	@JsonProperty("marker-symbol")
 	public void setMarkerSymbol(String markerSymbol) {
 		this.markerSymbol = markerSymbol;
+	}
+
+	@JsonProperty("foods")
+	public String[] getFoodItemList() {
+		return foodItemList;
+	}
+
+	@JsonProperty("foods")
+	public void setFoodItemList(String[] foodItemList) {
+		this.foodItemList = foodItemList;
 	} 
 }

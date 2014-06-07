@@ -59,7 +59,6 @@ public class SodaAPIAccessor {
 				approvedFoodTrucks.add(f);
 			}
 		}
- 
     }
 	
 	public List<FoodTruck> getAllFoodTrucks() {
@@ -105,6 +104,15 @@ public class SodaAPIAccessor {
 					properties.setMarkerColor("#9c89cc");
 					properties.setMarkerSymbol("cafe");
 				}
+				
+				String foodString = ft.getFooditems();
+				String[] splitStrings = foodString.split(":");
+				String[] tempList = new String[splitStrings.length];
+				for (int j=0; j<splitStrings.length; j++) {
+					tempList[j] = splitStrings[j].toLowerCase().trim();
+				}
+				
+				properties.setFoodItemList(tempList);
 				
 				Feature f = new Feature(geo, properties);
 				features.add(f);

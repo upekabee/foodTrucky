@@ -1,7 +1,6 @@
 package com.example.models;
 
 import javax.xml.bind.annotation.XmlRootElement;
-
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
@@ -23,7 +22,8 @@ public class FoodTruck {
 	private String address; 
 	private String applicant; 
 	private String lot; 
-	private String fooditems; 
+	private String foodItems; 
+	private String[] foodItemsList; 
 	private int objectid; 
 	private Location location; 
 	
@@ -86,8 +86,9 @@ public class FoodTruck {
 		return lot;
 	}
 
+	@JsonProperty("fooditems")
 	public String getFooditems() {
-		return fooditems;
+		return foodItems;
 	}
 
 	public int getObjectid() {
@@ -147,8 +148,9 @@ public class FoodTruck {
 		this.lot = lot;
 	}
 
-	public void setFooditems(String fooditems) {
-		this.fooditems = fooditems;
+	@JsonProperty("fooditems")
+	public void setFooditems(String foodItems) {
+		this.foodItems = foodItems;
 	}
 
 	public void setObjectid(int objectid) {
@@ -162,5 +164,13 @@ public class FoodTruck {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public String[] getFoodItemsList() {
+		return foodItemsList;
+	}
+
+	public void setFoodItemsList(String[] foodItemsList) {
+		this.foodItemsList = foodItemsList;
 	}
 }

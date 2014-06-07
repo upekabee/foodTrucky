@@ -22,7 +22,7 @@
 		</style>
 		
 		<div id='map'></div>
-		<input id='search' class='search-ui' placeholder='Food?' />
+		<input id='search' class='search-ui' placeholder='What would you like to eat?' />
 			    
 		<script>
 			var map = L.mapbox.map('map', 'upekabee.id3ghdgh')
@@ -33,17 +33,13 @@
 			$('#search').keyup(search);
 			
 			function search() {
-    			// get the value of the search input field
     			var searchString = $('#search').val().toLowerCase();
 
-    			featureLayer.setFilter(showState);
+    			featureLayer.setFilter(showFoods);
 
-    			// here we're simply comparing the 'state' property of each marker
-    			// to the search string, seeing whether the former contains the latter.
-			    function showState(feature) {
-			        return feature.properties.state
-			            .toLowerCase()
-			            .indexOf(searchString) !== -1;
+			    function showFoods(feature) {
+			        return feature.properties.foods
+			            .indexOf(searchString) > -1
 			    }
 			}		
 		</script>
@@ -65,7 +61,7 @@ function(data) {
       						}
       					}
  
- (function() {
+ 				(function() {
   				var zeAPI = "/services/geojson";
   				$.getJSON(zeAPI, function() {
   						console.log( "success" );
