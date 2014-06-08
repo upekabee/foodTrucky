@@ -14,5 +14,4 @@ public enum FeatureType {
 	public String getValue() {
 		return type;
 	}
-	
 }

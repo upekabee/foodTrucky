@@ -96,23 +96,29 @@ public class SodaAPIAccessor {
 				Properties properties = new Properties(); 
 				properties.setMarkerSize("large");
 				
-				if (i % 2 == 0) {
-					properties.setMarkerColor("#fa0");
-					properties.setMarkerSymbol("fast-food");
+				// Set default properties
+				properties.setMarkerColor(IconType.DEFAULT.getColor());
+				properties.setMarkerSymbol(IconType.DEFAULT.getIcon());
 					
-				} else {
-					properties.setMarkerColor("#9c89cc");
-					properties.setMarkerSymbol("cafe");
-				}
-				
+				// Create food items array on properties object
 				String foodString = ft.getFooditems();
 				String[] splitStrings = foodString.split(":");
-				String[] tempList = new String[splitStrings.length];
+				String[] foodArray = new String[splitStrings.length];
 				for (int j=0; j<splitStrings.length; j++) {
-					tempList[j] = splitStrings[j].toLowerCase().trim();
+					foodArray[j] = splitStrings[j].toLowerCase().trim();
 				}
 				
-				properties.setFoodItemList(tempList);
+				properties.setFoodItemList(foodArray);
+				
+				// Get me some pretty icons and colors
+				for (String s : foodArray) {
+					for (IconType it : IconType.values()) {
+						if (it.getSynonymSet().contains(s)) {
+							properties.setMarkerColor(it.getColor());
+							properties.setMarkerSymbol(it.getIcon());
+						}
+					}
+				}
 				
 				Feature f = new Feature(geo, properties);
 				features.add(f);
