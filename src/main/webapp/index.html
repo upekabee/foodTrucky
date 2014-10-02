@@ -41,37 +41,27 @@
 			        return feature.properties.foods
 			            .indexOf(searchString) > -1
 			    }
-			}		
+			}
+			
+			// Add custom popups to each marker
+			featureLayer.on('layeradd', function(e) {
+    			var marker = e.layer,
+        			feature = marker.feature;
+
+    			// Create custom popup content
+    			var popupContent = '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
+                            			feature.properties.name +
+                            			feature.properties.address +
+                            			feature.properties.foods +
+                        			'</a>';
+
+   	 			marker.bindPopup(popupContent,{
+        			closeButton: false,
+        			minWidth: 320
+    			});
+			});
+					
 		</script>
 	
 	</body>
 </html>
-
-<!--
-function(data) {
-      					$.each(data, function(i, item) {
-        					if (item.location != null) {
-	        					L.marker([item.location.latitude, item.location.longitude], {
-	    							icon: L.mapbox.marker.icon({
-	        							'marker-size': 'large',
-	        							'marker-symbol': 'fast-food',
-	        							'marker-color': '#fa0'
-	    							})
-								}).addTo(map);
-      						}
-      					}
- 
- 				(function() {
-  				var zeAPI = "/services/geojson";
-  				$.getJSON(zeAPI, function() {
-  						console.log( "success" );
-					})
-					.done();
-    				});
-			})();
-			
-			function geoJSONLoaded(data) {
-    			featureLayer.setGeoJSON(csv2geojson.csv2geojson(csv));
-			}
- 
--->
