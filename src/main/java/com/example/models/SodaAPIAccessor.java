@@ -94,6 +94,9 @@ public class SodaAPIAccessor {
 				geo.setCoordinates(coordinates);
 				
 				Properties properties = new Properties(); 
+				properties.setName(ft.getApplicant());
+				properties.setAddress(ft.getAddress());
+				properties.setUrl("https://www.google.com/");
 				properties.setMarkerSize("large");
 				
 				// Set default properties
